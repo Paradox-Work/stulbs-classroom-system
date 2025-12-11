@@ -1,6 +1,6 @@
 <x-layout title="Admin Dashboard">
     <style>
-        /* ENHANCED MODERN ADMIN THEME */
+        /* ADMIN DASHBOARD - MODERN BLUE THEME */
         :root {
             --primary: #0F4C75;
             --primary-dark: #0c3a5c;
@@ -8,55 +8,49 @@
             --accent: #BBE1FA;
             --light: #f0f9ff;
             --dark: #1B262C;
-            --bg: linear-gradient(135deg, #f5f7fa 0%, #e3f2fd 100%);
-            --card: rgba(255, 255, 255, 0.95);
+            --bg: #f5f7fa;
+            --card: white;
             --success: #10b981;
             --error: #ef4444;
             --warning: #f59e0b;
             --info: #3b82f6;
-            --gradient: linear-gradient(135deg, #0F4C75 0%, #3282B8 100%);
-        }
-        
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
+            --gray: #6b7280;
+            --light-gray: #f9fafb;
         }
         
         .admin-container {
             min-height: 100vh;
             background: var(--bg);
             font-family: 'Inter', -apple-system, sans-serif;
-            overflow-x: hidden;
         }
         
-        /* Modern Header */
+        /* Header */
         .admin-header {
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 3rem 2rem;
+            padding: 2.5rem 2rem;
             position: relative;
             overflow: hidden;
-            animation: slideDown 0.8s ease-out;
-        }
-        
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         .admin-bg {
             position: absolute;
-            width: 600px;
-            height: 600px;
+            width: 400px;
+            height: 400px;
             background: rgba(187, 225, 250, 0.1);
             border-radius: 50%;
-            top: -300px;
-            right: -300px;
+            top: -200px;
+            right: -200px;
             animation: rotate 40s linear infinite;
         }
         
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         .admin-header-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
@@ -66,341 +60,195 @@
         }
         
         .admin-welcome h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
             margin: 0 0 0.5rem 0;
             display: flex;
             align-items: center;
             gap: 1rem;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out 0.3s forwards;
         }
         
         .admin-welcome p {
             margin: 0;
             color: rgba(187, 225, 250, 0.9);
-            font-size: 1.2rem;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out 0.5s forwards;
+            font-size: 1.1rem;
         }
         
-        .logout-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out 0.7s forwards;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .logout-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .logout-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .logout-btn:hover::before {
-            left: 100%;
-        }
-        
-        /* Modern Navigation Tabs */
+        /* Navigation Tabs */
         .admin-tabs {
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: white;
+            border-bottom: 2px solid #e5e7eb;
             padding: 0 2rem;
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
         }
         
         .tab-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            gap: 0.5rem;
+            gap: 1rem;
             overflow-x: auto;
-            padding: 1rem 0;
+            padding-bottom: 0.5rem;
         }
         
         .tab {
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem;
             background: none;
             border: none;
             font-size: 1rem;
             font-weight: 600;
-            color: var(--dark);
+            color: var(--gray);
             cursor: pointer;
-            border-radius: 12px;
+            border-bottom: 3px solid transparent;
             transition: all 0.3s ease;
             white-space: nowrap;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            opacity: 0.7;
         }
         
         .tab:hover {
-            background: rgba(15, 76, 117, 0.1);
             color: var(--primary);
-            opacity: 1;
-            transform: translateY(-2px);
         }
         
         .tab.active {
-            background: var(--gradient);
-            color: white;
-            opacity: 1;
-            box-shadow: 0 8px 20px rgba(15, 76, 117, 0.3);
-        }
-        
-        .tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 2px;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+            color: var(--primary);
+            border-bottom-color: var(--primary);
         }
         
         /* Main Content */
         .admin-main {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
         
-        /* Enhanced Stats Grid */
+        /* Stats Grid */
         .admin-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
         
         .admin-stat {
             background: var(--card);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: slideUp 0.6s ease-out forwards;
-        }
-        
-        .admin-stat:nth-child(1) { animation-delay: 0.2s; }
-        .admin-stat:nth-child(2) { animation-delay: 0.3s; }
-        .admin-stat:nth-child(3) { animation-delay: 0.4s; }
-        .admin-stat:nth-child(4) { animation-delay: 0.5s; }
-        
-        @keyframes slideUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .admin-stat:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(15, 76, 117, 0.15);
-            border-color: rgba(15, 76, 117, 0.2);
-        }
-        
-        .admin-stat-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: white;
-            box-shadow: 0 8px 20px rgba(15, 76, 117, 0.3);
+            gap: 1rem;
             transition: all 0.3s ease;
         }
         
-        .admin-stat:hover .admin-stat-icon {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 12px 25px rgba(15, 76, 117, 0.4);
+        .admin-stat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .admin-stat-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
         }
         
         .admin-stat-content h3 {
             margin: 0;
             font-size: 0.9rem;
-            color: var(--dark);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.7;
-        }
-        
-        .admin-stat-content p {
-            margin: 0.5rem 0 0;
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-        
-        /* Enhanced Management Card */
-        .manage-card {
-            background: var(--card);
-            border-radius: 25px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: slideUp 0.8s ease-out forwards;
-            animation-delay: 0.6s;
-        }
-        
-        .card-title {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin: 0 0 2rem 0;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-        
-        .card-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
-        }
-        
-        /* Enhanced Users Table */
-        .users-table-container {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        }
-        
-        .users-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            background: white;
-        }
-        
-        .users-table thead {
-            background: var(--light);
-        }
-        
-        .users-table th {
-            padding: 1.5rem;
-            text-align: left;
-            font-weight: 700;
-            color: var(--primary);
-            border-bottom: 2px solid var(--accent);
-            font-size: 0.9rem;
+            color: var(--gray);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         
-        .users-table tbody tr {
-            transition: all 0.3s ease;
+        .admin-stat-content p {
+            margin: 0.25rem 0 0;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
         }
         
-        .users-table tbody tr:hover {
+        /* Management Card */
+        .manage-card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .card-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin: 0 0 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        /* Users Table */
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .users-table th {
             background: var(--light);
-            transform: translateX(5px);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 700;
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
         }
         
         .users-table td {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
         }
         
         .user-avatar {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: 700;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(15, 76, 117, 0.3);
+            font-size: 1rem;
         }
         
         .role-badge {
-            padding: 0.5rem 1.2rem;
-            border-radius: 25px;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            display: inline-block;
         }
         
         .role-admin {
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+            background: rgba(239, 68, 68, 0.1);
             color: #dc2626;
-            border: 1px solid rgba(239, 68, 68, 0.2);
         }
         
         .role-teacher {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+            background: rgba(59, 130, 246, 0.1);
             color: #2563eb;
-            border: 1px solid rgba(59, 130, 246, 0.2);
         }
         
         .role-student {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+            background: rgba(16, 185, 129, 0.1);
             color: #059669;
-            border: 1px solid rgba(16, 185, 129, 0.2);
         }
         
         .action-buttons {
@@ -409,100 +257,71 @@
         }
         
         .action-btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
             border: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .action-btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
-        }
-        
-        .action-btn:hover::after {
-            animation: ripple 1s ease-out;
+            gap: 0.3rem;
         }
         
         .action-edit {
-            background: linear-gradient(135deg, var(--light), #e0f2fe);
+            background: var(--light);
             color: var(--primary);
             border: 1px solid var(--accent);
         }
         
         .action-reset {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+            background: rgba(245, 158, 11, 0.1);
             color: #d97706;
             border: 1px solid rgba(245, 158, 11, 0.2);
         }
         
         .action-delete {
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+            background: rgba(239, 68, 68, 0.1);
             color: #dc2626;
             border: 1px solid rgba(239, 68, 68, 0.2);
         }
         
         .action-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
         
-        /* Enhanced Activity Log */
+        /* Activity Log */
         .activity-list {
             background: white;
-            border-radius: 20px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
         .activity-item {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 1.25rem;
+            border-bottom: 1px solid #e5e7eb;
             display: flex;
             align-items: flex-start;
-            gap: 1.5rem;
+            gap: 1rem;
             transition: all 0.3s ease;
         }
         
         .activity-item:hover {
             background: var(--light);
-            transform: translateX(5px);
         }
         
         .activity-icon {
-            width: 50px;
-            height: 50px;
+            width: 36px;
+            height: 36px;
             background: var(--light);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-        
-        .activity-item:hover .activity-icon {
-            background: var(--gradient);
-            color: white;
-            transform: scale(1.1);
+            font-size: 1rem;
         }
         
         .activity-content {
@@ -512,168 +331,119 @@
         .activity-user {
             font-weight: 700;
             color: var(--dark);
-            font-size: 1.1rem;
         }
         
         .activity-time {
-            font-size: 0.9rem;
-            color: var(--dark);
-            opacity: 0.6;
-            margin-top: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--gray);
         }
         
-        /* Enhanced Create User Form */
+        /* Create User Form */
         .create-form {
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border-radius: 25px;
-            padding: 3rem;
+            border-radius: 16px;
+            padding: 2rem;
             border: 2px dashed var(--accent);
-            backdrop-filter: blur(10px);
         }
         
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .form-label {
             display: block;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             font-weight: 600;
             color: var(--dark);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
         
         .form-input {
             width: 100%;
-            padding: 1.25rem 1.5rem;
-            border: 2px solid rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
             font-size: 1rem;
             color: var(--dark);
             transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.9);
         }
         
         .form-input:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 4px rgba(15, 76, 117, 0.1);
-            background: white;
-            transform: translateY(-2px);
         }
         
         .form-actions {
             display: flex;
             gap: 1rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
         
         .btn-primary {
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 1.25rem 2.5rem;
-            border-radius: 15px;
+            padding: 1rem 2rem;
+            border-radius: 12px;
             border: none;
             font-weight: 700;
-            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            box-shadow: 0 10px 25px rgba(15, 76, 117, 0.3);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(15, 76, 117, 0.3);
         }
         
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(15, 76, 117, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(15, 76, 117, 0.4);
         }
         
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
-        }
-        
-        .btn-primary:hover::after {
-            animation: ripple 1s ease-out;
-        }
-        
-        /* Enhanced System Overview Cards */
+        /* System Overview Cards */
         .system-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
         
         .system-card {
             background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .system-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
         }
         
         .system-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(15, 76, 117, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
         }
         
-        /* Enhanced Empty State */
+        /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             color: #9ca3af;
         }
         
         .empty-icon {
-            font-size: 5rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.3;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
         }
         
-        /* Enhanced Alert Messages */
+        /* Alert Messages */
         .alert {
-            padding: 1.5rem 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 1rem;
-            animation: slideIn 0.5s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            gap: 0.75rem;
+            animation: slideIn 0.3s ease;
         }
         
         .alert-success {
@@ -688,7 +458,7 @@
             color: var(--error);
         }
         
-        /* Enhanced Modal */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -700,99 +470,38 @@
             z-index: 1000;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(5px);
         }
         
         .modal-content {
             background: white;
-            border-radius: 25px;
-            padding: 3rem;
+            border-radius: 20px;
+            padding: 2.5rem;
             width: 90%;
             max-width: 500px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
-            animation: modalIn 0.4s ease;
-            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            animation: modalIn 0.3s ease;
         }
         
-        .modal-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 25px 25px 0 0;
-        }
-        
-        /* Quick Actions Cards */
-        .quick-actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .action-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            text-align: center;
-            cursor: pointer;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .action-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(15, 76, 117, 0.15);
-            border-color: rgba(15, 76, 117, 0.2);
-        }
-        
-        .action-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
+        @keyframes modalIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         
         /* Responsive */
-        @media (max-width: 1024px) {
+        @media (max-width: 768px) {
             .admin-header-content {
                 flex-direction: column;
-                gap: 2rem;
+                gap: 1.5rem;
                 text-align: center;
             }
             
-            .admin-welcome h1 {
-                font-size: 2.5rem;
-            }
-            
-            .system-cards {
-                grid-template-columns: 1fr;
-            }
-            
-            .quick-actions {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .admin-main {
-                padding: 1.5rem;
+            .tab-container {
+                overflow-x: auto;
+                padding-bottom: 1rem;
             }
             
             .admin-stats {
                 grid-template-columns: 1fr;
-            }
-            
-            .tab-container {
-                padding-bottom: 1rem;
-                overflow-x: auto;
-            }
-            
-            .tab {
-                padding: 0.75rem 1.5rem;
             }
             
             .users-table {
@@ -804,29 +513,14 @@
                 flex-direction: column;
             }
             
-            .action-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .quick-actions {
+            .system-cards {
                 grid-template-columns: 1fr;
-            }
-            
-            .form-actions {
-                flex-direction: column;
-            }
-            
-            .btn-primary, .action-btn {
-                width: 100%;
-                justify-content: center;
             }
         }
     </style>
 
-    <!-- Modern Admin Layout -->
     <div class="admin-container">
-        <!-- Enhanced Header -->
+        <!-- Header -->
         <div class="admin-header">
             <div class="admin-bg"></div>
             <div class="admin-header-content">
@@ -837,40 +531,30 @@
                     </h1>
                     <p>Sveiki, <strong>{{ auth()->user()->name }}</strong> — jums ir pilnas administrācijas tiesības</p>
                 </div>
-                <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">@csrf</form>
-                <button onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
-                        class="logout-btn">
-                    <span>🚪</span>
-                    Iziet
-                </button>
+                <div>
+                    <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">@csrf</form>
+                    <button onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
+                            class="action-btn" style="background: var(--accent); color: var(--primary); padding: 0.75rem 1.5rem; border-radius: 12px; text-decoration: none; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; cursor: pointer; border: none;">
+                        <span>🚪</span>
+                        Iziet
+                    </button>
+                </div>
             </div>
         </div>
 
-        <!-- Modern Navigation Tabs -->
+        <!-- Navigation Tabs -->
         <div class="admin-tabs">
             <div class="tab-container">
-                <button class="tab active" onclick="switchTab('overview')">
-                    <span>📊</span>
-                    Pārskats
-                </button>
-                <button class="tab" onclick="switchTab('users')">
-                    <span>👥</span>
-                    Lietotāji
-                </button>
-                <button class="tab" onclick="switchTab('activity')">
-                    <span>📋</span>
-                    Darbību Vēsture
-                </button>
-                <button class="tab" onclick="switchTab('create')">
-                    <span>➕</span>
-                    Izveidot Lietotāju
-                </button>
+                <button class="tab active" onclick="switchTab('overview')">📊 Pārskats</button>
+                <button class="tab" onclick="switchTab('users')">👥 Lietotāji</button>
+                <button class="tab" onclick="switchTab('activity')">📋 Darbību Vēsture</button>
+                <button class="tab" onclick="switchTab('create')">➕ Izveidot Lietotāju</button>
             </div>
         </div>
 
         <!-- Main Content -->
         <div class="admin-main">
-            <!-- Enhanced Alerts -->
+            <!-- Alerts -->
             @if (session('success'))
                 <div class="alert alert-success">
                     <span>✅</span>
@@ -880,17 +564,15 @@
             @if ($errors->any())
                 <div class="alert alert-error">
                     <span>❌</span>
-                    <div>
-                        @foreach ($errors->all() as $error)
-                            <div>{{ $error }}</div>
-                        @endforeach
-                    </div>
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach
                 </div>
             @endif
 
             <!-- Overview Tab (Default) -->
             <div id="overview-tab" class="tab-content">
-                <!-- Enhanced Stats Bar -->
+                <!-- Stats Bar -->
                 <div class="admin-stats">
                     <div class="admin-stat">
                         <div class="admin-stat-icon">👥</div>
@@ -922,7 +604,7 @@
                     </div>
                 </div>
 
-                <!-- Enhanced System Overview -->
+                <!-- System Overview -->
                 <div class="manage-card">
                     <h2 class="card-title">
                         <span>📊</span>
@@ -933,10 +615,10 @@
                         <div class="system-card">
                             <div style="display: flex; justify-content: space-between; align-items: start;">
                                 <div>
-                                    <h4 style="margin: 0 0 0.75rem; color: var(--primary); font-size: 1.1rem; font-weight: 700;">📖 Kursi</h4>
-                                    <p style="margin: 0; font-size: 2.5rem; font-weight: 800; color: var(--primary);">{{ \App\Models\Subject::count() }}</p>
+                                    <h4 style="margin: 0 0 0.75rem; color: var(--primary); font-size: 1rem; font-weight: 700;">📖 Kursi</h4>
+                                    <p style="margin: 0; font-size: 2rem; font-weight: 800; color: var(--primary);">{{ \App\Models\Subject::count() }}</p>
                                 </div>
-                                <div style="font-size: 3rem; color: var(--accent); opacity: 0.8;">📖</div>
+                                <div style="font-size: 2.5rem; color: var(--accent);">📖</div>
                             </div>
                             <p style="margin: 0.5rem 0 0; color: var(--gray); font-size: 0.9rem;">Aktīvi kursi sistēmā</p>
                         </div>
@@ -944,10 +626,10 @@
                         <div class="system-card">
                             <div style="display: flex; justify-content: space-between; align-items: start;">
                                 <div>
-                                    <h4 style="margin: 0 0 0.75rem; color: #2d7e2d; font-size: 1.1rem; font-weight: 700;">✏️ Uzdevumi</h4>
-                                    <p style="margin: 0; font-size: 2.5rem; font-weight: 800; color: #2d7e2d;">{{ \App\Models\Assignment::count() }}</p>
+                                    <h4 style="margin: 0 0 0.75rem; color: #2d7e2d; font-size: 1rem; font-weight: 700;">✏️ Uzdevumi</h4>
+                                    <p style="margin: 0; font-size: 2rem; font-weight: 800; color: #2d7e2d;">{{ \App\Models\Assignment::count() }}</p>
                                 </div>
-                                <div style="font-size: 3rem; color: #86efac; opacity: 0.8;">✏️</div>
+                                <div style="font-size: 2.5rem; color: #86efac;">✏️</div>
                             </div>
                             <p style="margin: 0.5rem 0 0; color: var(--gray); font-size: 0.9rem;">Kopējie uzdevumi</p>
                         </div>
@@ -955,41 +637,36 @@
                         <div class="system-card">
                             <div style="display: flex; justify-content: space-between; align-items: start;">
                                 <div>
-                                    <h4 style="margin: 0 0 0.75rem; color: #8B5E00; font-size: 1.1rem; font-weight: 700;">📤 Iesniegumi</h4>
-                                    <p style="margin: 0; font-size: 2.5rem; font-weight: 800; color: #8B5E00;">{{ \App\Models\AssignmentFile::count() }}</p>
+                                    <h4 style="margin: 0 0 0.75rem; color: #8B5E00; font-size: 1rem; font-weight: 700;">📤 Iesniegumi</h4>
+                                    <p style="margin: 0; font-size: 2rem; font-weight: 800; color: #8B5E00;">{{ \App\Models\AssignmentFile::count() }}</p>
                                 </div>
-                                <div style="font-size: 3rem; color: #fde68a; opacity: 0.8;">📤</div>
+                                <div style="font-size: 2.5rem; color: #fde68a;">📤</div>
                             </div>
                             <p style="margin: 0.5rem 0 0; color: var(--gray); font-size: 0.9rem;">Kopējās iesniegšanas</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Enhanced Quick Actions -->
+                <!-- Quick Actions -->
                 <div class="manage-card">
                     <h2 class="card-title">
                         <span>⚡</span>
                         Ātrās Darbības
                     </h2>
                     
-                    <div class="quick-actions">
-                        <div class="action-card" onclick="switchTab('create')">
-                            <span class="action-icon">➕</span>
-                            <h3 style="margin: 0 0 0.5rem; color: var(--primary);">Izveidot Lietotāju</h3>
-                            <p style="margin: 0; color: var(--gray); font-size: 0.9rem;">Pievienot jaunu lietotāju sistēmai</p>
-                        </div>
-                        
-                        <div class="action-card" onclick="switchTab('users')">
-                            <span class="action-icon">👥</span>
-                            <h3 style="margin: 0 0 0.5rem; color: var(--primary);">Pārvaldīt Lietotājus</h3>
-                            <p style="margin: 0; color: var(--gray); font-size: 0.9rem;">Rediģēt lomas un atiestatīt paroles</p>
-                        </div>
-                        
-                        <div class="action-card" onclick="switchTab('activity')">
-                            <span class="action-icon">📋</span>
-                            <h3 style="margin: 0 0 0.5rem; color: var(--primary);">Skatīt Logus</h3>
-                            <p style="margin: 0; color: var(--gray); font-size: 0.9rem;">Auditēt sistēmas darbības</p>
-                        </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <button onclick="switchTab('create')" class="action-btn" style="background: var(--primary); color: white; padding: 1rem; justify-content: center;">
+                            <span>➕</span>
+                            Izveidot Lietotāju
+                        </button>
+                        <button onclick="switchTab('users')" class="action-btn" style="background: var(--secondary); color: white; padding: 1rem; justify-content: center;">
+                            <span>👥</span>
+                            Pārvaldīt Lietotājus
+                        </button>
+                        <button onclick="switchTab('activity')" class="action-btn" style="background: var(--accent); color: var(--primary); padding: 1rem; justify-content: center;">
+                            <span>📋</span>
+                            Skatīt Logus
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1002,7 +679,391 @@
                         Lietotāju Pārvaldība
                     </h2>
                     
+                    @php
+                        $users = \App\Models\User::orderBy('created_at', 'desc')->get();
+                    @endphp
+                    
                     @if($users->isEmpty())
                         <div class="empty-state">
                             <div class="empty-icon">👥</div>
-                            <h3 style="color
+                            <h3 style="color: var(--gray); margin: 0 0 0.5rem 0;">
+                                Nav lietotāju
+                            </h3>
+                            <p style="margin: 0;">Izveidojiet pirmo lietotāju</p>
+                        </div>
+                    @else
+                        <div style="overflow-x: auto;">
+                            <table class="users-table">
+                                <thead>
+                                    <tr>
+                                        <th>Lietotājs</th>
+                                        <th>E-pasts</th>
+                                        <th>Loma</th>
+                                        <th>Reģistrēts</th>
+                                        <th>Darbības</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($users as $user)
+                                        <tr>
+                                            <td>
+                                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                                    <div class="user-avatar">
+                                                        {{ strtoupper(substr($user->name, 0, 1)) }}
+                                                    </div>
+                                                    <div>
+                                                        <div style="font-weight: 600;">{{ $user->name }}</div>
+                                                        <div style="font-size: 0.85rem; color: var(--gray);">ID: {{ $user->id }}</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>
+                                                <span class="role-badge role-{{ $user->role }}">
+                                                    {{ $user->role }}
+                                                </span>
+                                            </td>
+                                            <td>{{ $user->created_at->format('d.m.Y') }}</td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button onclick="editUser({{ $user->id }}, '{{ $user->name }}', '{{ $user->email }}', '{{ $user->role }}')" class="action-btn action-edit">
+                                                        ✏️ Rediģēt
+                                                    </button>
+                                                    <button onclick="resetPassword({{ $user->id }}, '{{ $user->name }}')" class="action-btn action-reset">
+                                                        🔄 Atiestatīt Paroli
+                                                    </button>
+                                                    @if($user->id !== auth()->id())
+                                                        <button onclick="deleteUser({{ $user->id }}, '{{ $user->name }}')" class="action-btn action-delete">
+                                                            🗑️ Dzēst
+                                                        </button>
+                                                    @endif
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+                </div>
+            </div>
+
+<!-- Activity Tab -->
+<div id="activity-tab" class="tab-content" style="display: none;">
+    <div class="manage-card">
+        <h2 class="card-title">
+            <span>📋</span>
+            Sistēmas Darbību Vēsture
+        </h2>
+        
+        <!-- Activity Log -->
+        <div class="activity-list">
+            @forelse($activities as $activity)
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        @switch($activity->action)
+                            @case('user.created')
+                                👤
+                                @break
+                            @case('user.updated')
+                                ✏️
+                                @break
+                            @case('user.deleted')
+                                🗑️
+                                @break
+                            @case('user.role_changed')
+                                🔄
+                                @break
+                            @case('user.password_reset')
+                                🔒
+                                @break
+                            @default
+                                📝
+                        @endswitch
+                    </div>
+                    <div class="activity-content">
+                        <div>
+                            <span class="activity-user">{{ $activity->user->name ?? 'Sistēma' }}</span>
+                            <span style="color: var(--gray);"> — {{ $activity->description }}</span>
+                        </div>
+                        <div class="activity-time">
+                            {{ $activity->created_at->diffForHumans() }}
+                            • IP: {{ $activity->ip_address }}
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <div class="empty-state">
+                    <div class="empty-icon">📋</div>
+                    <h3 style="color: var(--gray); margin: 0 0 0.5rem 0;">
+                        Nav darbību
+                    </h3>
+                    <p style="margin: 0;">Darbības tiks reģistrētas automātiski</p>
+                </div>
+            @endforelse
+        </div>
+        
+    </div>
+</div>
+
+            <!-- Create User Tab -->
+            <div id="create-tab" class="tab-content" style="display: none;">
+                <div class="manage-card">
+                    <h2 class="card-title">
+                        <span>➕</span>
+                        Izveidot Jaunu Lietotāju
+                    </h2>
+                    
+                    <form method="POST" action="{{ route('admin.users.store') }}" class="create-form">
+                        @csrf
+                        
+                        <div class="form-group">
+                            <label class="form-label">Vārds</label>
+                            <input type="text" name="name" class="form-input" placeholder="Ievadiet lietotāja vārdu" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">E-pasts</label>
+                            <input type="email" name="email" class="form-input" placeholder="piemērs@epasts.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Parole</label>
+                            <input type="password" name="password" class="form-input" placeholder="Vismaz 8 rakstzīmes" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Apstiprināt Paroli</label>
+                            <input type="password" name="password_confirmation" class="form-input" placeholder="Atkārtojiet paroli" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Loma</label>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                                <label style="display: flex; flex-direction: column; padding: 1rem; background: white; border: 2px solid #E0E7FF; border-radius: 12px; cursor: pointer; text-align: center;">
+                                    <input type="radio" name="role" value="admin" style="width: 20px; height: 20px; margin: 0 auto 0.75rem;">
+                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚙️</div>
+                                    <div style="font-weight: 700; color: var(--dark);">Administrators</div>
+                                </label>
+                                
+                                <label style="display: flex; flex-direction: column; padding: 1rem; background: white; border: 2px solid #E0E7FF; border-radius: 12px; cursor: pointer; text-align: center;">
+                                    <input type="radio" name="role" value="teacher" style="width: 20px; height: 20px; margin: 0 auto 0.75rem;">
+                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">👨‍🏫</div>
+                                    <div style="font-weight: 700; color: var(--dark);">Skolotājs</div>
+                                </label>
+                                
+                                <label style="display: flex; flex-direction: column; padding: 1rem; background: white; border: 2px solid #E0E7FF; border-radius: 12px; cursor: pointer; text-align: center;">
+                                    <input type="radio" name="role" value="student" checked style="width: 20px; height: 20px; margin: 0 auto 0.75rem;">
+                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">👨‍🎓</div>
+                                    <div style="font-weight: 700; color: var(--dark);">Students</div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">
+                                <span>✨</span>
+                                Izveidot Lietotāju
+                            </button>
+                            <button type="button" onclick="switchTab('users')" class="action-btn action-edit" style="padding: 1rem 2rem;">
+                                Atcelt
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h3 style="margin: 0 0 1.5rem 0; color: var(--primary);">✏️ Rediģēt Lietotāju</h3>
+            <form id="editForm" method="POST">
+                @csrf
+                @method('PUT')
+                
+                <div class="form-group">
+                    <label class="form-label">Vārds</label>
+                    <input type="text" name="name" id="editName" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">E-pasts</label>
+                    <input type="email" name="email" id="editEmail" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Loma</label>
+                    <select name="role" id="editRole" class="form-input" required>
+                        <option value="admin">Administrators</option>
+                        <option value="teacher">Skolotājs</option>
+                        <option value="student">Students</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">
+                        <span>💾</span>
+                        Saglabāt Izmaiņas
+                    </button>
+                    <button type="button" onclick="closeModal()" class="action-btn action-edit" style="padding: 1rem 2rem;">
+                        Atcelt
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Reset Password Modal -->
+    <div id="resetModal" class="modal">
+        <div class="modal-content">
+            <h3 style="margin: 0 0 1.5rem 0; color: var(--primary);">🔄 Atiestatīt Paroli</h3>
+            <form id="resetForm" method="POST">
+                @csrf
+                @method('PUT')
+                
+                <div class="form-group">
+                    <label class="form-label">Jauna parole lietotājam <span id="resetUserName" style="font-weight: 700;"></span></label>
+                    <input type="password" name="password" class="form-input" placeholder="Ievadiet jauno paroli" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Apstiprināt Paroli</label>
+                    <input type="password" name="password_confirmation" class="form-input" placeholder="Atkārtojiet paroli" required>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">
+                        <span>🔒</span>
+                        Atiestatīt Paroli
+                    </button>
+                    <button type="button" onclick="closeModal()" class="action-btn action-edit" style="padding: 1rem 2rem;">
+                        Atcelt
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete User Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <h3 style="margin: 0 0 1.5rem 0; color: #dc2626;">🗑️ Dzēst Lietotāju</h3>
+            <p style="margin: 0 0 1.5rem 0; color: var(--gray);">
+                Vai tiešām vēlaties dzēst lietotāju <span id="deleteUserName" style="font-weight: 700;"></span>?
+                Šī darbība ir neatgriezeniska!
+            </p>
+            
+            <form id="deleteForm" method="POST">
+                @csrf
+                @method('DELETE')
+                
+                <div class="form-actions">
+                    <button type="submit" class="action-btn action-delete" style="padding: 1rem 2rem;">
+                        <span>🗑️</span>
+                        Dzēst Lietotāju
+                    </button>
+                    <button type="button" onclick="closeModal()" class="action-btn action-edit" style="padding: 1rem 2rem;">
+                        Atcelt
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').style.display = 'block';
+            
+            // Update active tab button
+            document.querySelectorAll('.tab').forEach(button => {
+                button.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Save active tab to localStorage
+            localStorage.setItem('activeAdminTab', tabName);
+        }
+
+        // Initialize with saved tab or overview
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTab = localStorage.getItem('activeAdminTab') || 'overview';
+            switchTab(savedTab);
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab').forEach(button => {
+                button.classList.remove('active');
+                if (button.textContent.includes(savedTab === 'overview' ? 'Pārskats' : 
+                                                savedTab === 'users' ? 'Lietotāji' :
+                                                savedTab === 'activity' ? 'Darbību' : 'Izveidot')) {
+                    button.classList.add('active');
+                }
+            });
+        });
+
+        // Modal functions
+        function editUser(userId, name, email, role) {
+            document.getElementById('editName').value = name;
+            document.getElementById('editEmail').value = email;
+            document.getElementById('editRole').value = role;
+            document.getElementById('editForm').action = `/admin/users/${userId}`;
+            document.getElementById('editModal').style.display = 'flex';
+        }
+
+        function resetPassword(userId, name) {
+            document.getElementById('resetUserName').textContent = name;
+            document.getElementById('resetForm').action = `/admin/users/${userId}/reset-password`;
+            document.getElementById('resetModal').style.display = 'flex';
+        }
+
+        function deleteUser(userId, name) {
+            document.getElementById('deleteUserName').textContent = name;
+            document.getElementById('deleteForm').action = `/admin/users/${userId}`;
+            document.getElementById('deleteModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal();
+            }
+        }
+
+        // Initialize role selection styling
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('input[name="role"]').forEach(radio => {
+                // Initialize selected state
+                if (radio.checked) {
+                    const selectedLabel = radio.closest('label');
+                    selectedLabel.style.borderColor = 'var(--primary)';
+                    selectedLabel.style.background = 'linear-gradient(135deg, rgba(15, 76, 117, 0.05), rgba(50, 130, 184, 0.02))';
+                }
+                
+                radio.addEventListener('change', function() {
+                    document.querySelectorAll('label').forEach(label => {
+                        label.style.borderColor = '#E0E7FF';
+                        label.style.background = 'white';
+                    });
+                    
+                    const selectedLabel = this.closest('label');
+                    selectedLabel.style.borderColor = 'var(--primary)';
+                    selectedLabel.style.background = 'linear-gradient(135deg, rgba(15, 76, 117, 0.05), rgba(50, 130, 184, 0.02))';
+                });
+            });
+        });
+    </script>
+</x-layout>
